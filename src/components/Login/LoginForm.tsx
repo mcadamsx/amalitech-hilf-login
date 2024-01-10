@@ -1,7 +1,6 @@
 // LoginForm.tsx
 
 import React, { useState } from 'react';
-import { FaEnvelope, FaLock } from 'react-icons/fa';
 import "./Login.css"
 
 interface LoginFormProps {
@@ -13,7 +12,6 @@ const LoginForm: React.FC<LoginFormProps> = ({ onLogin = () => {} }) => {
   const [password, setPassword] = useState<string>('');
 
   const handleLogin = () => {
-    // Perform login logic here
     onLogin(email, password);
   };
 

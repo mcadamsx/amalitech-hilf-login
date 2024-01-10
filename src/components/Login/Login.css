@@ -56,3 +56,13 @@
     color: #fff;
     background-color: #EB9C7F;
   }
+  @media screen and (min-width: 320px) and (max-width:480px) {
+   
+  
+    form{
+      width: 80%;
+    }
+    .footerContainer{
+      width: 80%;
+    }
+  }
