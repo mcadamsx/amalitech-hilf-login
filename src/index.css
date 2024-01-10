@@ -1,0 +1,28 @@
+*{
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  font-family: 'Montserrat', sans-serif;
+}
+.main{
+  display: flex;
+  align-items: center;
+}
+
+.avater{
+  width: 50%;
+  height: 90vh;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  text-align: center;
+  background-color: #F9E0D7;
+}
+.avater img{
+  width: 60%;
+  margin-top: 20%;
+}
+.login{
+  text-align: center;
+  width: 50%;
+  height: 80vh;
+}
