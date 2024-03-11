@@ -1,6 +1,10 @@
-<form action=""
+
+<form action="" (ngSubmit)="loginUser()" [formGroup]="loginForm"
       class="lg:w-5/12 w-full rounded-3xl bg-semi-dark-blue mx-auto ">
-  <div class="my-5 w-full relative ">
+  @if(isLoading){
+    <app-spinner></app-spinner>
+  }
+  <div class="my-3 w-full relative ">
     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
       <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M1.05562 0.841919L19.2307 0.841919C19.4985 0.841919 19.7553 0.9483 19.9447 1.13766C20.134
@@ -11,10 +15,14 @@
          16.9975H18.221V5.12114ZM2.58132 2.86137L10.2048 9.58817L17.7181 2.86137L2.58132 2.86137Z" fill="lightgray"/>
       </svg>
     </div>
-    <input type="email"
+    <input type="email" formControlName="email"
            class="bg-transparent rounded-lg border-gray-300 border font-normal text-md  w-full p-1.5 pl-10"
            placeholder="Email">
+
   </div>
+  <small  *ngIf=" email.invalid && (email.dirty || email.touched)" class="text-red-800 text-sm">
+    <div *ngIf="email.errors?.['email']">Invalid Email</div>
+  </small>
   <div class="my-5 w-full relative">
     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
       <svg width="19" height="22" viewBox="0 0 19 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -23,12 +31,12 @@
           fill="lightgray"/>
       </svg>
     </div>
-    <input type="password"
-           class="bg-transparent border rounded-lg border-gray-300 font-normal text-md  w-full p-1.5 pl-10 active:outline-Bg-button "
+    <input type="password" formControlName="password"
+           class="bg-transparent border rounded-lg border-gray-300 font-normal text-md  w-full p-1.5 pl-10 active:outline-Bg-button lg: "
            placeholder="Password">
   </div>
   <div class="mb-10">
-    <button type="submit"
+    <button type="submit" [disabled]="loginForm.invalid"
             class="bg-Bg-button text-md font-normal lg:w-5/12 rounded-xl text-white p-2  w-full">
       Sign in
     </button>
