@@ -56,8 +56,7 @@ export class LoginFormComponent {
             "Incorrect credentials."
 
           console.error(this.errorMessage)
-        }, 2000)
-
+        }, 1000)
       }
     )
   }
