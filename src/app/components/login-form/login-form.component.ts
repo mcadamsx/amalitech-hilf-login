@@ -23,6 +23,8 @@ export class LoginFormComponent {
     password: ["", [Validators.required]]
   });
   isLoading = false;
+  errorMessage : string = ""
+
   get email() {
     return this.loginForm.controls['email'];
   }
@@ -31,8 +33,10 @@ export class LoginFormComponent {
   }
   constructor(private fb:FormBuilder, private authService: AuthserviceService, private router:Router,@Inject(DOCUMENT) private document: Document) {
   }
+
   loginUser(){
     this.isLoading = true;
+    this.errorMessage = ""
     const postData = {...this.loginForm.value}
     this.authService.loginCredentials(postData as AuthInterface).subscribe(
       (response) =>{
@@ -42,14 +46,18 @@ export class LoginFormComponent {
             this.isLoading = false
           }, 3000)
           this.document.location.href = 'https://stackoverflow.com';
-
         }
       },
       error => {
         setTimeout(()=>{
           this.isLoading = false
+          this.errorMessage = "Oops! Login failed\n" +
+            "\n" +
+            "Incorrect credentials."
+
+          console.error(this.errorMessage)
         }, 2000)
-        console.error("email or password is wrong")
+
       }
     )
   }

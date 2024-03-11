@@ -4,6 +4,10 @@
   @if(isLoading){
     <app-spinner></app-spinner>
   }
+  <div *ngIf="errorMessage" class="p-2 border border-red-600 rounded-xl text-red-500">
+    {{errorMessage}}
+
+  </div>
   <div class="my-3 w-full relative ">
     <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
       <svg width="21" height="20" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -20,7 +24,7 @@
            placeholder="Email">
 
   </div>
-  <small  *ngIf=" email.invalid && (email.dirty || email.touched)" class="text-red-800 text-sm">
+  <small  *ngIf=" email.invalid && (email.dirty || email.touched)" class="text-Bg-button text-sm">
     <div *ngIf="email.errors?.['email']">Invalid Email</div>
   </small>
   <div class="my-5 w-full relative">
@@ -37,7 +41,7 @@
   </div>
   <div class="mb-10">
     <button type="submit" [disabled]="loginForm.invalid"
-            class="bg-Bg-button text-md font-normal lg:w-5/12 rounded-xl text-white p-2  w-full">
+            class="bg-Bg-button text-md font-normal lg:w-5/12 rounded-xl text-white p-2  w-full ">
       Sign in
     </button>
   </div>
